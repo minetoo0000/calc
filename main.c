@@ -38,13 +38,18 @@ int64_t calc_func(uint64_t first, uint64_t second, uint8_t calc_char)
     }
 }
 
-void new_call_prob()
+uint8_t new_call_prob()
 {
     // init.
     static uint8_t count = 0;
     
     
     // run.
+    if ( count >= MAX_COUNT )
+    {
+        return( 1 );
+    }
+    
     uint64_t first = get_rand();
     int8_t ch = get_rand_calc_char();
     uint64_t second = get_rand();
@@ -65,13 +70,18 @@ void new_call_prob()
     {
         printf("\n Wrong! Answer is %d.\n", answer);
     }
+
+    return( 0 );
 }
 
 int main()
 {
     while ( 1 )
     {
-
+        if ( new_call_prob() )
+        {
+            return( 0 );
+        }
     }
 
 
