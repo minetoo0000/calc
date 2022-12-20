@@ -8,7 +8,7 @@
 
 void init()
 {
-    srand(clock());
+    srand(time(0));
 }
 
 int64_t get_rand()
@@ -59,7 +59,7 @@ uint8_t new_call_prob()
 
     
     printf("\n [%d/%d] %d %c %d = ", ++count, MAX_COUNT,  first, ch, second);
-    scanf("%d", &get_input_num);
+    scanf("%lld", &get_input_num);
 
     // answer check.
     if ( get_input_num == answer )
@@ -76,6 +76,8 @@ uint8_t new_call_prob()
 
 int main()
 {
+    init();
+    
     while ( 1 )
     {
         if ( new_call_prob() )
